@@ -12,9 +12,9 @@ class Test {
 
   play() {
     let fn = gameStartFn.bind(this)
-    eventEmitter.on('gameStart', fn);
+    eventEmitter.once('gameStart', fn);
     run();
-    eventEmitter.off('gameStart', fn)
+    //eventEmitter.off('gameStart', fn)
   }
 }
 

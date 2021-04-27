@@ -1,4 +1,4 @@
 const eventEmitter = require('./eventEmitter')
 module.exports.run = function() {
-  eventEmitter.emit('gameStart');
+  return eventEmitter.emit('gameStart');
 }

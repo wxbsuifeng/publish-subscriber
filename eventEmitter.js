@@ -15,6 +15,7 @@ let eventEmitter = {
     fnList.map(fn => {
       fn();
     })
+    return eventEmitter;
   },
   off: (event, fn) => {
     let fnList = eventList[event];
@@ -29,7 +30,7 @@ let eventEmitter = {
     }
 
     for(let idx = 0; idx < fnList.length; idx++) {
-      if(idx ===  fn) {
+      if(fnList[idx] ===  fn) {
         fnList.splice(idx, 1);
         break;
       }
@@ -40,11 +41,11 @@ let eventEmitter = {
   },
   once: (event, fn) => {
     function onceFn (){
-      off(event, onceFn);
       fn();
+      eventEmitter.off(event, onceFn);
     }
 
-    on(event, onceFn);
+    eventEmitter.on(event, onceFn);
     return eventEmitter;
   }
 }
